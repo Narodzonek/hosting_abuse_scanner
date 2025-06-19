@@ -22,11 +22,19 @@ This script automates the process by generating a single, clean report that summ
 
 ## Usage 💻
 
-1.  **Clone the repository**
-    ```bash
-    git clone https://github.com/Narodzonek/hosting-abuse-scanner.git
-    cd hosting-abuse-scanner
-    ```
+The script is designed to be run directly on the server within the directory you wish to scan.
+
+1.  **Download the script**
+    Navigate to the user's home directory (or any directory you want to scan) and use one of the following commands to download the script:
+
+    * **Using `wget` (recommended):**
+        ```bash
+        wget https://raw.githubusercontent.com/Narodzonek/hosting_abuse_scanner/main/abuse_scanner.sh
+        ```
+    * **Using `curl` (alternative):**
+        ```bash
+        curl -o abuse_scanner.sh https://raw.githubusercontent.com/Narodzonek/hosting_abuse_scanner/main/abuse_scanner.sh
+        ```
 
 2.  **Make the script executable**
     ```bash
