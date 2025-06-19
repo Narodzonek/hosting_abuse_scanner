@@ -24,7 +24,7 @@ This script automates the process by generating a single, clean report that summ
 
 1.  **Clone the repository**
     ```bash
-    git clone [https://github.com/](https://github.com/)Narodzonek/hosting-abuse-scanner.git
+    git clone https://github.com/Narodzonek/hosting-abuse-scanner.git
     cd hosting-abuse-scanner
     ```
 
@@ -42,7 +42,7 @@ This script automates the process by generating a single, clean report that summ
         ```
     * Run with custom parameters:
         ```bash
-        ./abuse_scanner.sh --top 5 --prog-archiwum 50
+        ./abuse_scanner.sh --top 5 --th-archive 100 --th-media 50
         ```
     * Display the help message:
         ```bash
@@ -77,7 +77,7 @@ B. Directories with the Highest File Count (Top 10):
 ------------------------------------------------------------------
 FILE COUNT | SIZE       | PATH
 ------------------------------------------------------------------
-376        | 2.4 M      |  ./domains/[example.com/public_html/administrator/language/en-GB](https://example.com/public_html/administrator/language/en-GB)
+376        | 2.4 M      |  ./domains/example.com/public_html/administrator/language/en-GB
 ...
 
 5. POTENTIALLY SUSPICIOUS FILES AND DIRECTORIES DETECTED
