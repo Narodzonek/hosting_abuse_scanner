@@ -1,4 +1,4 @@
-# Hosting Abuse Scanner 🚀
+# Hosting Abuse Scanner 🚫🤬🛡️🛠️
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -7,20 +7,22 @@ violations, such as unauthorized backups, warez, or excessive resource usage.
 
 It can also be used for private purposes to analyze space usage on the hosting service.
 
-## Why This Script? 🤔
+## Why This Script? 
 
 Manually searching hosting accounts with tools like `du` or `ncdu` for violations is time-consuming and inefficient. 
 This script automates the process by generating a single, clean report that summarizes all potential issues. 
 
-## Key Features 🛠️
+## Key Features 
 
 * **Large File Analysis**: Identifies archives, media files, and other large files exceeding a specified threshold.
 * **In-depth Directory Analysis**: Creates "Top 10" lists for directories with the largest size and the highest file count (inodes).
 * **Violation Pattern Detection**: Actively searches for files and directories that match known violation patterns (e.g., warez, suspicious folder names).
+* **Phishing and Web Shell Detection**: Identifies potential phishing kits and common web shells by filename.
+* **Access Log Analysis**: Scans access logs for traces of malicious bots and scanning tools.
 * **Fully Configurable**: Allows for easy adjustment of thresholds and parameters via command-line flags.
-* **Clean & Readable Reports**: Generates a clear summary ready to be copied and pasted.
+* **Clean & Readable Reports**: Generates a clear summary ready to be copied and pasted or saved to a file.
 
-## Usage 💻
+## Usage 
 
 The script is designed to be run directly on the server within the directory you wish to scan.
 
@@ -52,12 +54,16 @@ The script is designed to be run directly on the server within the directory you
         ```bash
         ./abuse_scanner.sh --top 5 --th-archive 100 --th-media 50
         ```
+    * Save the report to a file:
+        ```bash
+        ./abuse_scanner.sh --output-file report.txt
+        ```
     * Display the help message:
         ```bash
         ./abuse_scanner.sh --help
         ```
 
-## Sample Report 📊
+## Sample Report 
 ```
 --- Account Usage Report ---
 Generated at: 2025-06-11 11:26:48
@@ -92,6 +98,9 @@ FILE COUNT | SIZE       | PATH
 ==================================================================
 Suspicious directory name: ./movies
 File matching "warez" pattern: ./movies/My.Great.Movie.2025.PL.1080p.mkv (12.4 G)
+Potential phishing file (keyword in name): ./public_html/login.html.bak
+Potential web shell detected: ./public_html/wp-content/uploads/c99.php
+Suspicious user agent in ./logs/access_log: 123.123.123.123 - - [11/Jun/2025:10:00:00 +0200] "GET / HTTP/1.1" 200 1234 "-" "sqlmap/1.5.11"
 
 --- End of Report ---
 ```
