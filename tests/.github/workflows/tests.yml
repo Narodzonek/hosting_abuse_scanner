@@ -1,0 +1,35 @@
+name: Test Suite
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Install bats-core
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y bats
+        
+    - name: Make scanner executable
+      run: |
+        chmod +x abuse_scanner.sh
+        
+    - name: Run tests
+      run: |
+        cd tests
+        bats test.bats
+        
+    - name: Run tests with verbose output
+      if: failure()
+      run: |
+        cd tests
+        bats test.bats --verbose

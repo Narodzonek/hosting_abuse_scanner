@@ -1,0 +1,30 @@
+# Test artifacts and temporary files
+*.tmp
+*.temp
+test_output_*
+scanner_output_*
+test_report_*
+
+# Test directories created during testing
+test_*/
+
+# Coverage reports (if added in future)
+coverage/
+*.coverage
+
+# Performance test results
+performance_results.txt
+
+# Test logs
+test.log
+bats.log
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
