@@ -1,0 +1,51 @@
+name: 🧪 Test Suite - Hosting Abuse Scanner
+
+# Kiedy uruchamiać testy
+on:
+  push:                    # Przy każdym push'u
+    branches: [ main ]     # Do gałęzi main
+  pull_request:           # Przy tworzeniu Pull Request
+    branches: [ main ]    # Do gałęzi main
+
+# Zadania do wykonania
+jobs:
+  test:
+    name: 🚀 Run Tests
+    runs-on: ubuntu-latest  # Na najnowszej wersji Ubuntu
+    
+    steps:
+    # Krok 1: Pobierz kod z repozytorium
+    - name: 📥 Checkout code
+      uses: actions/checkout@v4
+      
+    # Krok 2: Zainstaluj bats-core
+    - name: 📦 Install bats-core
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y bats
+        
+    # Krok 3: Sprawdź czy skrypt jest wykonywalny
+    - name: 🔧 Make scanner executable
+      run: |
+        chmod +x abuse_scanner.sh
+        ls -la abuse_scanner.sh
+        
+    # Krok 4: Uruchom testy
+    - name: 🧪 Run tests
+      run: |
+        cd tests
+        bats test.bats
+        
+    # Krok 5: Uruchom testy z verbose (tylko jeśli poprzednie failowały)
+    - name: 🔍 Run tests with verbose output
+      if: failure()
+      run: |
+        cd tests
+        bats test.bats --verbose
+        
+    # Krok 6: Sprawdź czy wszystkie pliki testowe istnieją
+    - name: 📋 Verify test files
+      run: |
+        ls -la tests/
+        echo "Test files:"
+        find tests/ -name "*.bats" -type f
