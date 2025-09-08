@@ -1,0 +1,39 @@
+# Requirements for running tests
+# This file lists the tools and dependencies needed to run the test suite
+
+# Core testing framework
+bats-core>=1.2.0
+
+# System tools (usually pre-installed on Unix systems)
+bash>=4.0
+dd
+grep
+awk
+sort
+mktemp
+rm
+mkdir
+dirname
+basename
+
+# Optional tools for enhanced testing
+# These are not strictly required but can improve test experience
+jq>=1.6          # For JSON output parsing (if needed in future)
+time            # For performance measurements
+parallel        # For parallel test execution (if needed)
+
+# Installation instructions:
+# 
+# Ubuntu/Debian:
+#   sudo apt-get install bats-core
+# 
+# macOS (Homebrew):
+#   brew install bats-core
+# 
+# Manual installation:
+#   git clone https://github.com/bats-core/bats-core.git
+#   cd bats-core
+#   sudo ./install.sh /usr/local
+# 
+# Verify installation:
+#   bats --version
